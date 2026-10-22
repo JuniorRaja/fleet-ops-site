@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Fleet Ops — Section Compare</title>
+<style>
+  :root{
+    --bg:#0f0f10; --panel:#17181a; --line:#2a2c30; --ink:#f2f2f0; --mute:#9a9ea6;
+    --pick:#d6f24a; --a:#f5c518; --b:#8fe34a; --c:#2fa96a;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
+  header{position:sticky;top:0;z-index:10;background:rgba(15,15,16,.93);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);padding:14px 20px;display:flex;gap:16px;align-items:center;flex-wrap:wrap}
+  h1{font-size:16px;margin:0;letter-spacing:.02em}
+  .legend{display:flex;gap:14px;font-size:12px;color:var(--mute);flex-wrap:wrap}
+  .dot{display:inline-block;width:8px;height:8px;border-radius:9px;margin-right:6px}
+  .spacer{flex:1}
+  button{font:inherit;background:var(--panel);color:var(--ink);border:1px solid var(--line);border-radius:8px;padding:7px 12px;cursor:pointer}
+  button:hover{border-color:#4a4e55}
+  main{padding:24px 20px 90px;max-width:1700px;margin:0 auto}
+  section{margin-bottom:56px}
+  .shead{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin:0 0 6px}
+  .shead h2{font-size:22px;margin:0}
+  .tag{font:11px/1 ui-monospace,SFMono-Regular,Menlo,monospace;padding:5px 8px;border-radius:6px;color:#111}
+  .meta{color:var(--mute);font-size:13px;margin:0 0 18px;max-width:100ch}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:18px}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:12px;overflow:hidden;cursor:pointer;transition:border-color .12s,transform .12s}
+  .card:hover{transform:translateY(-2px)}
+  .card.on{border-color:var(--pick);box-shadow:0 0 0 1px var(--pick) inset}
+  .card img{width:100%;display:block;background:#000;aspect-ratio:8/5;object-fit:cover;object-position:top}
+  .body{padding:12px 14px 14px}
+  .t{font-weight:600;font-size:14px;margin:0 0 6px;display:flex;justify-content:space-between;gap:8px;align-items:start}
+  .n{font:11px/1.6 ui-monospace,Menlo,monospace;color:var(--mute);flex:none}
+  .d{margin:0 0 2px;color:#c9ccd2;font-size:13px}
+  .src{margin:8px 0 0;font:11px/1.5 ui-monospace,Menlo,monospace;color:var(--mute);word-break:break-all}
+  .motion{display:inline-block;font:10px/1 ui-monospace,Menlo,monospace;color:#111;background:var(--pick);padding:4px 6px;border-radius:4px;margin-left:6px;vertical-align:2px}
+  #out{position:fixed;inset:auto 0 0 0;background:#111214;border-top:1px solid var(--line);padding:10px 20px;font:12px/1.6 ui-monospace,Menlo,monospace;color:var(--mute);max-height:28vh;overflow:auto}
+</style>
+</head>
+<body>
+<header>
+  <h1>Fleet Ops — section compare</h1>
+  <div class="legend">
+    <span><i class="dot" style="background:var(--a)"></i>A · ditto-duo-2</span>
+    <span><i class="dot" style="background:var(--b)"></i>B · green-white</span>
+    <span><i class="dot" style="background:var(--c)"></i>C · green-cream</span>
+    <span>click a card to shortlist</span>
+  </div>
+  <span class="spacer"></span>
+  <button onclick="copyPicks()">Copy shortlist</button>
+  <button onclick="clearPicks()">Clear</button>
+</header>
+<main id="main"></main>
+<div id="out">shortlist: (none yet)</div>
+
+<script>
+// [no, slug, title, line1, line2, sourceFile, isMotionScene]
+const SITES = [
+{
+  id:"A", name:"ditto-duo-2", port:5102, color:"var(--a)",
+  note:"Editorial / newspaper direction. Cream + ink + yolk yellow, condensed display type, hand-written paper props. Three long pinned scroll scenes over a ~13,300px page. Lenis smooth scroll driving one hand-rolled rAF loop — no GSAP, no Three.js. Vehicle photos are still missing placeholders.",
+  items:[
+["01","hero-paper-storm","Hero — paper storm","Opens on a drift of scanned paper slips with one line of copy floating on a card.","Dozens of paper cards parallax outward as you scroll, clearing the screen.","src/components/Yard.tsx",1],
+["02","hero-headline","Hero — headline reveal","The paper clears to a huge three-line condensed headline with a yard clock and papers-due ticker.","CTA pair sits under the sub; vehicle photo strip to the right.","src/components/Yard.tsx",1],
+["03","hero-exit","Hero — exit fade","The whole hero desaturates and fades as the next section takes over.","Cross-fade handoff rather than a hard section cut.","src/components/Yard.tsx",1],
+["04","compliance-enter","Compliance — enter","Section title builds in while the compliance table slides up from below.","Three numbered sub-steps on the left track the scene's progress.","src/components/Compliance.tsx",1],
+["05","compliance-papers-fly","Compliance — papers fly","Six handwritten certificates fly across the table toward their columns.","The most literal and most charming metaphor in the whole set.","src/components/Compliance.tsx",1],
+["06","compliance-papers-land","Compliance — papers land","Papers settle into the grid and resolve into coloured status dots per column.","Step marker flips to 02 as the last sheet lands.","src/components/Compliance.tsx",1],
+["07","compliance-grid-reminders","Compliance — reminders","Full status grid plus a '3 papers due in the next 30 days' reminder card.","End state of the scene — reads fine as a static screenshot too.","src/components/Compliance.tsx",1],
+["08","trips-intro","Trips — intro","Hard cut to an ink-black section stating the trip-entry promise.","Ghosted trip sheet and ledger rows preview what the scene will fill in.","src/components/OneTrip.tsx",1],
+["09","trips-01-slip","Trips — 01 the slip","A handwritten trip slip tilts in on the left while the form stays blank.","Counter reads 'slips this month 0 / records updated 0/6'.","src/components/OneTrip.tsx",1],
+["10","trips-03-entered-once","Trips — 03 entered once","Paper slips stack up and the digital form fills itself field by field.","Container tab highlights yellow when the trip type needs it.","src/components/OneTrip.tsx",1],
+["11","trips-05-everything-follows","Trips — 05 everything follows","Save turns yellow and bezier lines fan out to six ledger cards.","Best 'one action, many consequences' visual on any of the three.","src/components/OneTrip.tsx",1],
+["12","roles","Roles","Three role cards — owner (inverted black), transport in-charge, accountant.","An audit-log strip below shows a real before/after change with its reason.","src/components/Roles.tsx",0],
+["13","more-bento","More — bento","Six-tile bento of secondary features with one full-yolk phone tile.","Mixed tile sizes keep it from reading as a plain feature grid.","src/components/More.tsx",0],
+["14","faq-does-not-do","FAQ — what it does NOT do","Negative framing: six red 'no' pills beside a plain accordion.","Unusual and credible — the product disqualifies itself on purpose.","src/components/Honest.tsx",0],
+["15","demo-form","Demo form","Full-bleed yolk panel, form right, oversized outlined FLEET lettering behind.","Fleet-size steppers for lorries / trailers / buses instead of free text.","src/components/Demo.tsx",0],
+["16","footer","Footer","Ink footer with a giant Fleet OPS wordmark and a motion on/off toggle.","Example-data disclaimer and local yard time at the very bottom.","src/components/Chrome.tsx",0]
+]},
+{
+  id:"B", name:"premium-fleetops-1-green-white", port:5103, color:"var(--b)",
+  note:"The most complete and most ambitious of the three — ~22,650px, 24 components. White/grey base with forest green and lime accents. GSAP ScrollTrigger pinned scenes, Lenis, a Three.js hero, custom cursor, real photography and three genuinely interactive demos.",
+  items:[
+["01","hero","Hero","Split hero: headline left, six 3D certificate cards tumbling right, live compliance card bottom-right.","Three.js scene plus a '50% — 3 of 6 vehicles clear' widget that states the problem in numbers.","src/components/Hero.tsx + src/three/heroScene.ts",1],
+["02","socialproof-stats","Social proof + stats","Logo marquee over a four-up stat bar (6 / 45 / 1 / 0).","Each number gets one line of explanation instead of standing alone.","src/components/SocialProof.tsx",1],
+["03","manifesto-problem-cards","Manifesto","Oversized grey paragraph that highlights word by word in green as you scroll.","Lands on three problem cards: papers in drawers, dates in diaries, trips on trust.","src/components/Manifesto.tsx",1],
+["04","how-01-capture","How it works — 01 capture","Pinned scene: copy left, a mock 'Add a paper' form right.","A vertical progress rail ticks through the three steps.","src/components/HowItWorks.tsx",1],
+["05","how-02-warn","How it works — 02 warn","Panel swaps to per-paper lead-time bars plus a WhatsApp reminder card.","Same pin, different payload; the copy column animates in sync.","src/components/HowItWorks.tsx",1],
+["06","how-03-hold","How it works — 03 hold","Final step shows a blocked dispatch demanding a written reason.","Scene unpins straight into the features section.","src/components/HowItWorks.tsx",1],
+["07","features-bento","Features — bento row 1","Asymmetric bento: matrix card, 45-days numeral, document-hold card, workshop photo tile.","Mixes live mini-UI, big type and photography in one grid.","src/components/Features.tsx",0],
+["08","features-row2","Features — row 2","Three quieter cards: driver licences, roles & overrides, audit trail.","Small labelled icons give each card a category.","src/components/Features.tsx",0],
+["09","papers-to-matrix-scatter","Papers → matrix (scatter)","Six colour-coded certificates scattered in 3D over a faint grid.","Opening frame of the site's signature pinned transformation.","src/components/PapersToMatrix.tsx",1],
+["10","papers-to-matrix-forming","Papers → matrix (forming)","Certificates collapse into table rows, one vehicle at a time.","Rows resolve top-down so the transformation stays readable.","src/components/PapersToMatrix.tsx",1],
+["11","papers-to-matrix-done","Papers → matrix (done)","Finished six-column matrix with real dates and a document-hold flag.","Best-executed scroll set-piece across all three sites.","src/components/PapersToMatrix.tsx",1],
+["12","demo1-matrix","Demo 1 — matrix","Fully interactive: filter chips (All / Expired / Expiring / Pending) over 36 clickable dots.","Keyboard and touch accessible, with reset and an example-data badge.","src/components/DemoMatrix.tsx",0],
+["13","demo2-dispatch","Demo 2 — dispatch","Pick a vehicle, get a one-line verdict, choose a driver, save the trip.","Held vehicles force a typed reason before Save unlocks.","src/components/DemoDispatch.tsx",0],
+["14","onesave-scene-empty","One save — scene start","Dark scene, empty trip sheet, giant outlined ONE SAVE lettering behind.","Lime-on-black is the strongest colour moment on the site.","src/components/OneSaveScene.tsx",1],
+["15","onesave-scene-filled","One save — scene filled","Fields self-fill and three lime bezier curves connect Save to trips, fuel log, driver account.","Same idea as A-11, in the premium visual language.","src/components/OneSaveScene.tsx",1],
+["16","demo3-onesave","Demo 3 — one save","The editable version: change the numbers, toggle container/general, press Save.","Three result cards flip from 'waiting for the save' to filled.","src/components/DemoOneSave.tsx",0],
+["17","benefits","Benefits","Numbered 01–04 list with outlined numerals beside a captioned yard photo.","Reads as an argument rather than a feature grid.","src/components/Benefits.tsx",0],
+["18","testimonials","Testimonials","Three quote cards in black / white / lime with role, fleet size and city.","Colour rotation keeps a flat row of quotes alive.","src/components/Testimonials.tsx",0],
+["19","pricing","Pricing","Three tiers, middle inverted with a 'most chosen' badge, monthly/yearly toggle.","Priced per band (₹1,999 / ₹6,399 / talk), not per vehicle.","src/components/Pricing.tsx",0],
+["20","faq","FAQ","Sticky left title, seven-row accordion right, one open by default.","Close control sits at the top-right of the open row.","src/components/FAQ.tsx",0],
+["21","final-cta","Final CTA","Dark photo panel with a pre-filled WhatsApp message mocked up as a chat bubble.","'Fill the blanks, press send' — lower friction than a form.","src/components/FinalCTA.tsx",0],
+["22","footer","Footer","Three-column footer over a huge ghosted FleetOPS wordmark.","Motion on/off toggle and a 'does not track vehicles' disclaimer.","src/components/Footer.tsx",0]
+]},
+{
+  id:"C", name:"premium-fleetops-green-cream", port:5104, color:"var(--c)",
+  note:"The calm, conventional SaaS cut — ~9,190px, 16 components. Cream and white with emerald green, soft gradient washes, rounded cards. Reveal-on-scroll only: no pinned scenes, no GSAP, no Three.js. Quickest to finish and the safest to ship.",
+  items:[
+["01","hero","Hero","Classic split hero: headline left, tilted compliance-matrix mock right with floating status chips.","Three proof stats (6+1 / 0 / 1 tap) sit under the CTAs.","src/components/Hero.tsx",0],
+["02","logo-marquee","Logo marquee","Thin scrolling band of OEM names on a tinted strip.","Cheapest credibility device of the three sites.","src/components/SocialProof.tsx",1],
+["03","features-cards","Features","Five rounded cards in a 2+3 layout, two of them washed with green.","Icon chips are dark squares — quiet, no motion.","src/components/Features.tsx",0],
+["04","compliance-intro","Compliance — intro","Section intro with the matrix demo starting directly underneath.","Sections are labelled PRODUCT · COMPLIANCE rather than by feature name.","src/components/demos/ComplianceMatrix.tsx",0],
+["05","compliance-matrix","Compliance — matrix","Interactive six-column grid with filter chips and per-column valid counts.","Lead times are spelled out in the footer row — a detail B lacks.","src/components/demos/ComplianceMatrix.tsx",0],
+["06","dispatch-guard","Dispatch guard","The one dark section: vehicle list left, verdict panel right.","Status pills (available / on trip / in workshop / document hold) carry the whole idea.","src/components/demos/VehicleCheck.tsx",0],
+["07","one-save","One save","Trip sheet left, three 'waiting for save' cards right.","Same concept as A-11 and B-15 but static — no connecting lines.","src/components/demos/OneSaveTrip.tsx",0],
+["08","benefits-stats","Benefits","Four stat cards (₹0 / −40% / 100% / 1) with a pull-quote card on the left.","Tight and scannable; the most reusable block on this site.","src/components/Benefits.tsx",0],
+["09","testimonials","Testimonials","Three star-rated quote cards with avatar initials.","The most generic section across all three sites.","src/components/Testimonials.tsx",0],
+["10","pricing","Pricing","Per-vehicle pricing (₹39 / ₹31 / talk), middle tier inverted, yearly saves 20%.","A different pricing model from B — worth deciding which one is true.","src/components/Pricing.tsx",0],
+["11","faq","FAQ","Six rounded accordion rows, centred, first one open.","Softest of the three FAQ treatments.","src/components/FAQ.tsx",0],
+["12","cta-footer","CTA + footer","Dark rounded CTA card floating on cream, then a light four-column footer.","Footer carries the motion toggle and legal links.","src/components/CTA.tsx + Footer.tsx",0]
+]}];
+
+let picked;
+try { picked = new Set(JSON.parse(localStorage.getItem("picks")||"[]")); } catch(e){ picked = new Set(); }
+
+document.getElementById("main").innerHTML = SITES.map(s=>`
+  <section>
+    <div class="shead">
+      <span class="tag" style="background:${s.color}">${s.id}</span>
+      <h2>${s.name}</h2>
+      <span class="n">localhost:${s.port}</span>
+    </div>
+    <p class="meta">${s.note}</p>
+    <div class="grid">
+      ${s.items.map(([no,slug,title,l1,l2,src,motion])=>{
+        const k = s.id+"-"+no;
+        return `<article class="card ${picked.has(k)?"on":""}" data-k="${k}">
+          <img loading="lazy" src="shots/${s.id}-${no}-${slug}.jpg" alt="${title}">
+          <div class="body">
+            <p class="t"><span>${title}${motion?'<span class="motion">MOTION</span>':''}</span><span class="n">${k}</span></p>
+            <p class="d">${l1}</p>
+            <p class="d">${l2}</p>
+            <p class="src">${src}</p>
+          </div>
+        </article>`;
+      }).join("")}
+    </div>
+  </section>`).join("");
+
+document.addEventListener("click",e=>{
+  const c=e.target.closest(".card"); if(!c) return;
+  const k=c.dataset.k;
+  picked.has(k)?picked.delete(k):picked.add(k);
+  c.classList.toggle("on");
+  save();
+});
+
+function save(){
+  try{ localStorage.setItem("picks",JSON.stringify([...picked])); }catch(e){}
+  const list=[...picked].sort();
+  document.getElementById("out").textContent = list.length
+    ? "shortlist ("+list.length+"): "+list.join("   ")
+    : "shortlist: (none yet)";
+}
+function copyPicks(){ navigator.clipboard.writeText([...picked].sort().join(", ")); }
+function clearPicks(){ picked.clear(); save(); document.querySelectorAll(".card.on").forEach(c=>c.classList.remove("on")); }
+save();
+</script>
+</body>
+</html>

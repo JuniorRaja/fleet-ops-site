@@ -1,0 +1,169 @@
+@import "tailwindcss";
+
+/* Lenis' own stylesheet (its package exports don't expose the .css path). */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis:not(.lenis-autoToggle).lenis-stopped {
+  overflow: clip;
+}
+.lenis.lenis-smooth iframe {
+  pointer-events: none;
+}
+
+/* ------------------------------------------------------------------
+   Type system
+   Display: Archivo at its widest cut (wdth 125), heavy, tight.
+   Text:    Archivo at normal width.
+   Mono:    JetBrains Mono for readouts: plates, clocks, labels, figures.
+   Hand:    Caveat, only for the handwritten trip slip.
+   ------------------------------------------------------------------ */
+@theme {
+  --font-display: "Archivo", "Arial Black", sans-serif;
+  --font-sans: "Archivo", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, Menlo, monospace;
+  --font-hand: "Caveat", "Segoe Print", cursive;
+
+  /* Warm editorial: cream paper, warm ink, one yolk-yellow pop. Never pure black or white. */
+  --color-cream: #f3efe6;
+  --color-paper: #fbf9f4;
+  --color-ink: #151515;
+  --color-ink-2: #1f1e1c;
+  --color-muted: #5a564e;
+  --color-faint: #8c877c;
+  --color-yolk: #ffc72c;
+  /* Status colours — product panels only, never decoration. */
+  --color-ok: #1f9d6b;
+  --color-due: #f2a93b;
+  --color-bad: #e04848;
+  --color-idle: #d9d3c6;
+
+  --text-hero: clamp(2.6rem, 7.2vw, 8.25rem);
+  --text-hero--line-height: 0.92;
+  --text-hero--letter-spacing: -0.03em;
+
+  --text-display: clamp(2rem, 4.4vw, 4.25rem);
+  --text-display--line-height: 0.96;
+  --text-display--letter-spacing: -0.025em;
+
+  --text-lead: clamp(1.0625rem, 1.45vw, 1.375rem);
+  --text-lead--line-height: 1.5;
+  --text-lead--letter-spacing: -0.01em;
+
+  --text-body: clamp(0.9375rem, 1.05vw, 1.0625rem);
+  --text-body--line-height: 1.6;
+  --text-body--letter-spacing: -0.005em;
+
+  --text-label: 0.6875rem;
+  --text-label--line-height: 1.3;
+  --text-label--letter-spacing: 0.14em;
+
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* The wide, heavy display cut. Use with font-display. */
+@utility wide {
+  font-stretch: 125%;
+  font-weight: 800;
+  text-wrap: balance;
+}
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    background: var(--color-cream);
+  }
+  body {
+    margin: 0;
+    background: var(--color-cream);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: clip;
+  }
+  ::selection {
+    background: var(--color-yolk);
+    color: var(--color-ink);
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-ink);
+    outline-offset: 3px;
+    border-radius: 6px;
+  }
+  p {
+    text-wrap: pretty;
+  }
+}
+
+@layer utilities {
+  .h-screen-s {
+    height: 100svh;
+  }
+
+  /* Corner brackets for the hero readouts. */
+  .brackets {
+    background:
+      linear-gradient(currentColor, currentColor) top left / 14px 1px,
+      linear-gradient(currentColor, currentColor) top left / 1px 14px,
+      linear-gradient(currentColor, currentColor) top right / 14px 1px,
+      linear-gradient(currentColor, currentColor) top right / 1px 14px,
+      linear-gradient(currentColor, currentColor) bottom left / 14px 1px,
+      linear-gradient(currentColor, currentColor) bottom left / 1px 14px,
+      linear-gradient(currentColor, currentColor) bottom right / 14px 1px,
+      linear-gradient(currentColor, currentColor) bottom right / 1px 14px;
+    background-repeat: no-repeat;
+  }
+
+  /* Ruled paper for the handwritten slip. */
+  .ruled {
+    background-color: #fbf6e9;
+    background-image:
+      linear-gradient(90deg, transparent 2.1rem, rgb(224 72 72 / 0.35) 2.1rem, rgb(224 72 72 / 0.35) calc(2.1rem + 1px), transparent calc(2.1rem + 1px)),
+      repeating-linear-gradient(180deg, transparent 0, transparent calc(1.6rem - 1px), rgb(21 21 21 / 0.09) calc(1.6rem - 1px), rgb(21 21 21 / 0.09) 1.6rem);
+  }
+
+  /* An asset that has not been added yet shows as a labelled outline. */
+  .asset-missing {
+    outline: 1.5px dashed rgb(21 21 21 / 0.25);
+    outline-offset: -1.5px;
+    background: repeating-linear-gradient(135deg, rgb(21 21 21 / 0.03) 0 12px, transparent 12px 24px);
+  }
+  .asset-missing img {
+    visibility: hidden;
+  }
+  .asset-missing::after {
+    content: attr(data-asset);
+    position: absolute;
+    inset: auto 0.5rem 0.5rem;
+    font: 500 0.625rem/1.3 var(--font-mono);
+    letter-spacing: 0.06em;
+    color: rgb(21 21 21 / 0.55);
+    text-align: center;
+  }
+
+  [data-reveal] {
+    opacity: 0;
+    transform: translate3d(0, 28px, 0);
+    transition:
+      opacity 0.8s var(--ease-out),
+      transform 0.8s var(--ease-out);
+  }
+  [data-reveal].is-in {
+    opacity: 1;
+    transform: none;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    [data-reveal] {
+      transform: none;
+    }
+  }
+}
+
+@keyframes beat-in {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 12px, 0);
+  }
+}

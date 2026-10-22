@@ -1,0 +1,58 @@
+﻿{
+    "version":  "0.0.1",
+    "configurations":  [
+                           {
+                               "name":  "ditto-duo-2",
+                               "runtimeExecutable":  "C:\\Program Files\\nodejs\\node.exe",
+                               "runtimeArgs":  [
+                                                   "E:\\My Works\\fleet-ops-site\\ditto-duo-2\\node_modules\\vite\\bin\\vite.js",
+                                                   "E:\\My Works\\fleet-ops-site\\ditto-duo-2",
+                                                   "--config",
+                                                   "E:\\My Works\\fleet-ops-site\\ditto-duo-2\\vite.config.ts",
+                                                   "--port",
+                                                   "5101",
+                                                   "--strictPort"
+                                               ],
+                               "port":  5101
+                           },
+                           {
+                               "name":  "green-white",
+                               "runtimeExecutable":  "C:\\Program Files\\nodejs\\node.exe",
+                               "runtimeArgs":  [
+                                                   "E:\\My Works\\fleet-ops-site\\premium-fleetops-1-green-white\\node_modules\\vite\\bin\\vite.js",
+                                                   "E:\\My Works\\fleet-ops-site\\premium-fleetops-1-green-white",
+                                                   "--config",
+                                                   "E:\\My Works\\fleet-ops-site\\premium-fleetops-1-green-white\\vite.config.ts",
+                                                   "--port",
+                                                   "5102",
+                                                   "--strictPort"
+                                               ],
+                               "port":  5102
+                           },
+                           {
+                               "name":  "green-cream",
+                               "runtimeExecutable":  "C:\\Program Files\\nodejs\\node.exe",
+                               "runtimeArgs":  [
+                                                   "E:\\My Works\\fleet-ops-site\\premium-fleetops-green-cream\\node_modules\\vite\\bin\\vite.js",
+                                                   "E:\\My Works\\fleet-ops-site\\premium-fleetops-green-cream",
+                                                   "--config",
+                                                   "E:\\My Works\\fleet-ops-site\\premium-fleetops-green-cream\\vite.config.ts",
+                                                   "--port",
+                                                   "5103",
+                                                   "--strictPort"
+                                               ],
+                               "port":  5103
+                           },
+                           {
+                               "name":  "review-sheet",
+                               "runtimeExecutable":  "C:\\Program Files\\nodejs\\node.exe",
+                               "runtimeArgs":  [
+                                                   "E:\\My Works\\fleet-ops-site\\ditto-duo-2\\node_modules\\vite\\bin\\vite.js",
+                                                   "E:\\My Works\\fleet-ops-site\\review",
+                                                   "--port",
+                                                   "5110"
+                                               ],
+                               "port":  5110
+                           }
+                       ]
+}
