@@ -1,6 +1,6 @@
 # Fleet Ops — merge plan
 
-**Base:** copy of `premium-fleetops-1-green-white/` → `fleet-ops-merged/`
+**Base:** copy of `samples/premium-fleetops-1-green-white/` → `fleet-ops-merged/`
 **Design system:** B's (white/paper + forest green + lime, Bricolage / Inter / JetBrains Mono)
 **Your picks:** 19 sections — 8 from A, 9 from B, 2 from C
 
