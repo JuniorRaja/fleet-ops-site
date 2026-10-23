@@ -102,7 +102,7 @@ export function Navbar() {
           </div>
         </nav>
         {open && (
-          <div id="mobile-menu" className="glass mx-auto mt-2 max-w-6xl rounded-3xl p-3 lg:hidden">
+          <div id="mobile-menu" className="menu-enter glass mx-auto mt-2 max-w-6xl rounded-3xl p-3 lg:hidden">
             <ul className="grid">
               {LINKS.map((l) => (
                 <li key={l.id}>

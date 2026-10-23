@@ -137,7 +137,7 @@ export function More() {
             className={`spot relative flex flex-col justify-between overflow-hidden rounded-[20px] p-6 ${SPAN[t.size]} ${t.size === 'phone' ? 'spot-brand bg-brand text-white md:flex-row md:items-end md:gap-6' : 'bg-white ring-1 ring-ink/8'}`}
           >
             <div className="relative z-10 max-w-[24rem]">
-              <span className={`eyebrow ${t.size === 'phone' ? 'text-white/65' : 'text-ink/45'}`}>0{i + 1}</span>
+              <span className={`eyebrow ${t.size === 'phone' ? 'text-white' : 'text-ink/70'}`}>0{i + 1}</span>
               <h3 className="display mt-6 text-[1.375rem]">{t.name}</h3>
               <p className={`mt-2 text-[0.9375rem] leading-relaxed ${t.size === 'phone' ? 'text-white/85' : 'text-ink/65'}`}>{t.body}</p>
             </div>

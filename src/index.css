@@ -1,6 +1,6 @@
 @import "tailwindcss";
 
-/* ---------- Fonts (latin subsets only, inlined by the single-file build) ---------- */
+/* ---------- Fonts (Latin subsets emitted as static assets) ---------- */
 @font-face {
   font-family: "Inter Variable";
   font-style: normal;
@@ -255,6 +255,24 @@ html.lenis body {
 }
 .btn:active {
   transform: scale(0.985);
+}
+
+@keyframes menu-enter {
+  from {
+    opacity: 0;
+    transform: translate3d(0, -8px, 0) scale(0.99);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+.menu-enter {
+  animation: menu-enter 220ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  transform-origin: top center;
+}
+html[data-motion="off"] .menu-enter {
+  animation: none;
 }
 
 /* ---------- Scroll reveal: a single fade-up ---------- */

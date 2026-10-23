@@ -21,14 +21,14 @@ export function Footer() {
     e.preventDefault();
     scrollToId(id);
   };
-  const link = "rounded text-paper/75 transition-colors duration-200 hover:text-paper";
+  const link = "inline-flex min-h-11 items-center rounded text-paper/75 transition-colors duration-200 hover:text-paper";
 
   return (
     <footer className="on-dark relative overflow-hidden bg-ink pb-28 pt-20 text-paper lg:pb-10">
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
         <div className="grid gap-12 lg:grid-cols-12">
           <div className="lg:col-span-5">
-            <a href="#top" onClick={go("top")} className="inline-block rounded-full" aria-label="Fleet OPS, back to top">
+            <a href="#top" onClick={go("top")} className="inline-flex min-h-11 items-center rounded-full" aria-label="Fleet OPS, back to top">
               <Logo dark className="[&_span]:text-paper" />
             </a>
             <p className="mt-6 max-w-sm text-[15px] leading-relaxed text-paper/75">
@@ -104,7 +104,7 @@ export function Footer() {
               role="switch"
               aria-checked={motion}
               onClick={() => setMotion(!motion)}
-              className="group inline-flex items-center gap-3 rounded-full border border-white/25 py-2 pl-4 pr-2 font-semibold text-paper transition-colors duration-200 hover:border-brand"
+              className="group inline-flex min-h-11 items-center gap-3 rounded-full border border-white/25 py-2 pl-4 pr-2 font-semibold text-paper transition-colors duration-200 hover:border-brand"
             >
               <span>Motion: {motion ? "on" : "off"}</span>
               <span

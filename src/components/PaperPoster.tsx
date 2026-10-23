@@ -60,9 +60,6 @@ export function PaperPoster() {
       >
         <path d="M28 18v48a10 10 0 0 1-20 0V22a7 7 0 0 1 14 0v42a4 4 0 0 1-8 0V28" />
       </svg>
-      <p className="absolute bottom-[3%] left-[7%] font-mono text-[9px] uppercase tracking-[0.14em] text-ink/55">
-        HERO-BG-01 · HERO-MG-01 · HERO-FG-01 — placeholder layers
-      </p>
     </div>
   );
 }

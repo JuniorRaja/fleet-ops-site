@@ -82,10 +82,10 @@ export function Pricing() {
                 aria-checked={yearly}
                 aria-label="Bill yearly and save 20%"
                 onClick={() => setYearly((y) => !y)}
-                className="relative h-8 w-14 rounded-full bg-ink transition-colors duration-200"
+                className="relative grid h-11 w-14 place-items-center rounded-full bg-ink transition-colors duration-200"
               >
                 <span
-                  className="absolute left-1 top-1 size-6 rounded-full bg-brand ring-2 ring-paper transition-[left] duration-200 ease-out"
+                  className="absolute left-1 top-1/2 size-6 -translate-y-1/2 rounded-full bg-brand ring-2 ring-paper transition-[left] duration-200 ease-out"
                   style={{ left: yearly ? 28 : 4 }}
                 />
               </button>
