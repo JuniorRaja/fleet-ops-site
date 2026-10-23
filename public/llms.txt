@@ -1,0 +1,24 @@
+# Fleet OPS
+
+> Fleet OPS is compliance and maintenance software for fleet operators managing lorries, trailers, and buses.
+
+## Product
+
+- Track vehicle papers: fitness certificate, insurance, Pollution Under Control (PUC), permit, registration certificate (RC), and road tax.
+- View paper status and lead-time reminders, and record document holds and overrides with a reason and responsible person.
+- Manage trip records, fuel, driver accounts, maintenance, and tyres.
+- Review cost per kilometre and trip accounts; export reports as CSV or PDF and import vehicle data from Excel.
+- Role-based views are described for owners, transport in-charges, and accountants.
+- Access the product at https://app.fleetops.in/.
+
+## Limits
+
+- Fleet OPS does not provide GPS or live vehicle tracking, driver monitoring, a driver app, bus ticketing, government filing, or a full accounting package.
+- Pricing is shared during a product demo; no public price is stated on the website.
+
+## Contact
+
+- Website: https://www.fleetops.in/
+- Email: info@fleetops.in
+- Phone and WhatsApp: +91 78711 94171
+- Business: VIDID Softech

@@ -3,7 +3,7 @@ import { Logo } from "@/components/ui/Logo";
 import { Icon } from "@/components/ui/Icons";
 import { scrollToId } from "@/lib/gsap";
 import { useMotion } from "@/lib/motion";
-import { APP_HREF, EMAIL_HREF, PH, WHATSAPP_HREF } from "@/lib/config";
+import { APP_HREF, EMAIL_HREF, PH, PHONE_HREF, WHATSAPP_HREF } from "@/lib/config";
 import { cn } from "@/utils/cn";
 
 const PRODUCT = [
@@ -64,6 +64,11 @@ export function Footer() {
                 </a>
               </li>
               <li>
+                <a href={PHONE_HREF} className={cn(link, "inline-flex items-center gap-2")}>
+                  {PH.phone}
+                </a>
+              </li>
+              <li>
                 <a href={APP_HREF} className={cn(link, "inline-flex items-center gap-2")}>
                   <Icon name="arrow-up-right" size={17} /> Open the app · {PH.app}
                 </a>
@@ -92,6 +97,8 @@ export function Footer() {
             © 2026 {PH.company}. Fleet OPS is compliance and maintenance software. It does not track vehicles.
           </p>
           <div className="flex flex-wrap items-center gap-5">
+            <a href="/privacy.html" className={cn(link, "font-semibold")}>Privacy</a>
+            <a href="/terms.html" className={cn(link, "font-semibold")}>Terms</a>
             <button
               type="button"
               role="switch"

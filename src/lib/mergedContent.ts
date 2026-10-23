@@ -1,3 +1,5 @@
+import { WHATSAPP_NUMBER } from "@/lib/config";
+
 export const roles = {
   eyebrow: "Roles",
   heading: "Your in-charge runs the day. You keep control.",
@@ -37,4 +39,4 @@ export const honest = {
   ],
 };
 
-export const questionHref = `https://wa.me/{{WHATSAPP_NUMBER}}?text=${encodeURIComponent("Hi, I have a question about Fleet Ops:")}`;
+export const questionHref = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent("Hi, I have a question about Fleet Ops:")}`;

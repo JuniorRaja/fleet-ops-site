@@ -1,7 +1,12 @@
-# Website Merger
+# Fleet OPS Site
 
-Build a new site out of the existing three sites.
+- The merged app lives at the repository root; source code is in `src/`.
+- Original projects are in `samples/`; merge notes and launch checklist are in `review/`.
+- Reuse existing components and patterns where practical. Ask when a product or design decision is unclear.
 
-- New site root: /fleet-ops-site
-- Lets try to take the code and components as is as much as we can instead of re-inventing or rewiring or re-writing
-- You can always ask me in case of any doubts, decisions
+## Commands
+
+- Install: `npm install`
+- Develop: `npm run dev`
+- Build: `npm run build`
+- Preview: `npm run preview`
