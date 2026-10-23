@@ -49,7 +49,7 @@ const KEY = "fleetops-motion";
 
 export function MotionProvider({ children }: { children: ReactNode }) {
   const reducedPref = useMedia("(prefers-reduced-motion: reduce)");
-  const desktop = useMedia("(min-width: 1024px) and (min-height: 700px)");
+  const desktop = useMedia("(min-width: 1024px)");
   const fine = useMedia("(hover: hover) and (pointer: fine)");
   const [override, setOverride] = useState<boolean | null>(() => {
     try {
