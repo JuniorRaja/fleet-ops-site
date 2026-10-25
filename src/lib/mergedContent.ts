@@ -1,4 +1,5 @@
 import { WHATSAPP_NUMBER } from "@/lib/config";
+import { fmtDate, TODAY } from "@/lib/fleet";
 
 export const roles = {
   eyebrow: "Roles",
@@ -8,7 +9,7 @@ export const roles = {
     { name: "Transport in-charge", lines: ["Trips, papers, fuel and tyres", "Vehicles and drivers", "Profit stays hidden"] },
     { name: "Accountant", lines: ["Trip money and the unbilled list", "Mark trips billed", "A monthly voucher CSV"] },
   ],
-  record: { what: "Closed trip changed", who: "Ravi · Transport in-charge", when: "13 Oct · 6:12 PM", change: "₹18,400 → ₹18,900", reason: "toll receipt added" },
+  record: { what: "Closed trip changed", who: "Ravi · Transport in-charge", when: `${fmtDate(TODAY)} · 6:12 PM`, change: "₹18,400 → ₹18,900", reason: "toll receipt added" },
   recordNote: "Change a closed trip and the old value, the new value and the reason stay on record.",
 };
 

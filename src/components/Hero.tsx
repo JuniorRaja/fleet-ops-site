@@ -4,10 +4,10 @@ import { Magnetic } from "@/components/ui/Magnetic";
 import { Icon } from "@/components/ui/Icons";
 import { StatusChip } from "@/components/ui/StatusDot";
 import { PaperPoster } from "@/components/PaperPoster";
-import { gsap, scrollToId } from "@/lib/gsap";
+import { gsap } from "@/lib/gsap";
 import { useMotion } from "@/lib/motion";
 import { WHATSAPP_HREF } from "@/lib/config";
-import { DOC_META, attentionList, complianceSummary, dueLabel } from "@/lib/fleet";
+import { DOC_META, TODAY, attentionList, complianceSummary, dueLabel, fmtDate } from "@/lib/fleet";
 import { cn } from "@/utils/cn";
 
 function hasWebGL() {
@@ -33,9 +33,9 @@ function Words({ text, className }: { text: string; className?: string }) {
   );
 }
 
-function HeroBoard() {
-  const { pct, clear, total } = complianceSummary();
-  const rows = attentionList(3);
+function HeroBoard({ today = TODAY }: { today?: string }) {
+  const { pct, clear, total } = complianceSummary(undefined, today);
+  const rows = attentionList(3, undefined, today);
   return (
     <aside
       aria-label="Example compliance board"
@@ -44,7 +44,7 @@ function HeroBoard() {
       <div className="flex items-center justify-between gap-3">
         <p className="eyebrow text-ink/65">Fleet compliance</p>
         <span className="rounded-full bg-ink/5 px-2.5 py-1 font-mono text-[10px] font-medium uppercase tracking-[0.12em] text-ink/65">
-          Example data
+          Example data · {fmtDate(today)}
         </span>
       </div>
       <div className="mt-3 flex items-end gap-3">
@@ -56,7 +56,7 @@ function HeroBoard() {
       <div
         className="mt-4 h-2 overflow-hidden rounded-full bg-[#c42222]/25"
         role="img"
-        aria-label={`${clear} of ${total} vehicles have no expired paper`}
+        aria-label={`${clear} of ${total} vehicles have no expired or pending paper`}
       >
         <div className="hero-fill h-full origin-left rounded-full bg-valid" style={{ width: `${pct}%` }} />
       </div>
@@ -76,7 +76,7 @@ function HeroBoard() {
   );
 }
 
-export function Hero() {
+export function Hero({ today = TODAY }: { today?: string }) {
   const { motion, pin } = useMotion();
   const root = useRef<HTMLElement>(null);
   const stage = useRef<HTMLDivElement>(null);
@@ -161,8 +161,8 @@ export function Hero() {
                 Book a demo on WhatsApp
               </Button>
             </Magnetic>
-            <Button variant="ghost" icon="arrow-down" onClick={() => scrollToId("matrix-scene")} cursor="See matrix">
-              See the compliance matrix
+            <Button href="/demo.html" variant="ghost" icon="arrow-up-right" cursor="Try demo">
+              Try the interactive demo
             </Button>
           </div>
           <ul className="hero-fade mt-8 flex flex-wrap gap-x-6 gap-y-2.5 text-sm font-medium text-ink/75">
@@ -186,7 +186,7 @@ export function Hero() {
         </div>
 
         <div className="relative z-30 mt-6 lg:static lg:mt-0">
-          <HeroBoard />
+          <HeroBoard today={today} />
         </div>
 
         <div className="absolute bottom-6 left-5 hidden items-center gap-3 sm:left-8 lg:left-12 lg:flex" aria-hidden="true">

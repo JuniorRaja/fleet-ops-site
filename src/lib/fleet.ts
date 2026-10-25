@@ -1,8 +1,8 @@
 export type DocId = "fitness" | "insurance" | "puc" | "permit" | "rc" | "tax";
 export type Status = "valid" | "expiring" | "pending" | "expired";
 
-/** The demo clock: Tuesday, 13 October 2026. */
-export const TODAY = "2026-10-13";
+/** Sample records keep their relative status as the calendar moves. */
+const REFERENCE_DATE = "2026-10-13";
 
 export const DOC_ORDER: DocId[] = ["fitness", "insurance", "puc", "permit", "rc", "tax"];
 
@@ -28,7 +28,7 @@ export interface Vehicle {
 
 const d = (expiry: string, pending = false): DocEntry => ({ expiry, pending });
 
-export const VEHICLES: Vehicle[] = [
+const BASE_VEHICLES: Vehicle[] = [
   {
     plate: "TN 00 AB 1201",
     kind: "Lorry · Tata Prima 4028",
@@ -106,10 +106,49 @@ export const VEHICLES: Vehicle[] = [
 const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
 const parts = (iso: string) => iso.split("-").map(Number) as [number, number, number];
+const pad = (value: number) => String(value).padStart(2, "0");
+
+export function isoToday(date = new Date()): string {
+  return `${date.getFullYear()}-${pad(date.getMonth() + 1)}-${pad(date.getDate())}`;
+}
+
+function dayDifference(later: string, earlier: string): number {
+  const [ly, lm, ld] = parts(later);
+  const [ey, em, ed] = parts(earlier);
+  return Math.round((Date.UTC(ly, lm - 1, ld) - Date.UTC(ey, em - 1, ed)) / 86400000);
+}
+
+export function shiftDate(iso: string, days: number): string {
+  const [y, m, day] = parts(iso);
+  const date = new Date(Date.UTC(y, m - 1, day));
+  date.setUTCDate(date.getUTCDate() + days);
+  return `${date.getUTCFullYear()}-${pad(date.getUTCMonth() + 1)}-${pad(date.getUTCDate())}`;
+}
+
+export function createFleetSnapshot(today = isoToday()): { today: string; vehicles: Vehicle[] } {
+  const offset = dayDifference(today, REFERENCE_DATE);
+  return {
+    today,
+    vehicles: BASE_VEHICLES.map((vehicle) => ({
+      ...vehicle,
+      docs: Object.fromEntries(
+        DOC_ORDER.map((id) => [id, { ...vehicle.docs[id], expiry: shiftDate(vehicle.docs[id].expiry, offset) }])
+      ) as Record<DocId, DocEntry>,
+    })),
+  };
+}
+
+const DEFAULT_SNAPSHOT = createFleetSnapshot();
+export const TODAY = DEFAULT_SNAPSHOT.today;
+export const VEHICLES = DEFAULT_SNAPSHOT.vehicles;
 
 export function fmtDate(iso: string): string {
   const [y, m, day] = parts(iso);
   return `${day} ${MONTHS[m - 1]} ${y}`;
+}
+
+export function demoDate(offset = 0, today = TODAY): string {
+  return shiftDate(today, offset);
 }
 
 export function fmtShort(iso: string): string {
@@ -117,24 +156,24 @@ export function fmtShort(iso: string): string {
   return `${day} ${MONTHS[m - 1]} '${String(y).slice(2)}`;
 }
 
-export function daysFrom(iso: string): number {
+export function daysFrom(iso: string, today = TODAY): number {
   const [y, m, day] = parts(iso);
-  const [ty, tm, td] = parts(TODAY);
+  const [ty, tm, td] = parts(today);
   return Math.round((Date.UTC(y, m - 1, day) - Date.UTC(ty, tm - 1, td)) / 86400000);
 }
 
-export function statusOf(type: DocId, e: DocEntry): Status {
+export function statusOf(type: DocId, e: DocEntry, today = TODAY): Status {
   if (e.pending) return "pending";
-  const days = daysFrom(e.expiry);
+  const days = daysFrom(e.expiry, today);
   if (days < 0) return "expired";
   if (days <= DOC_META[type].lead) return "expiring";
   return "valid";
 }
 
-export function describe(type: DocId, e: DocEntry): { headline: string; detail: string; status: Status } {
-  const status = statusOf(type, e);
+export function describe(type: DocId, e: DocEntry, today = TODAY): { headline: string; detail: string; status: Status } {
+  const status = statusOf(type, e, today);
   const name = DOC_META[type].short;
-  const days = daysFrom(e.expiry);
+  const days = daysFrom(e.expiry, today);
   const lead = DOC_META[type].lead;
   switch (status) {
     case "valid":
@@ -170,21 +209,26 @@ export function dueLabel(days: number): string {
   return `Due in ${days} day${days === 1 ? "" : "s"}`;
 }
 
-export function attentionList(limit = 3) {
+export function attentionList(limit = 3, vehicles = VEHICLES, today = TODAY) {
   const out: { plate: string; doc: DocId; days: number; status: Status }[] = [];
-  VEHICLES.forEach((v) =>
+  vehicles.forEach((v) =>
     DOC_ORDER.forEach((id) => {
-      const st = statusOf(id, v.docs[id]);
-      if (st === "expired" || st === "expiring") {
-        out.push({ plate: v.plate, doc: id, days: daysFrom(v.docs[id].expiry), status: st });
+      const st = statusOf(id, v.docs[id], today);
+      if (st === "expired" || st === "expiring" || st === "pending") {
+        out.push({ plate: v.plate, doc: id, days: daysFrom(v.docs[id].expiry, today), status: st });
       }
     })
   );
   return out.sort((a, b) => a.days - b.days).slice(0, limit);
 }
 
-export function complianceSummary() {
-  const total = VEHICLES.length;
-  const clear = VEHICLES.filter((v) => DOC_ORDER.every((id) => statusOf(id, v.docs[id]) !== "expired")).length;
+export function complianceSummary(vehicles = VEHICLES, today = TODAY) {
+  const total = vehicles.length;
+  const clear = vehicles.filter((v) =>
+    DOC_ORDER.every((id) => {
+      const status = statusOf(id, v.docs[id], today);
+      return status !== "expired" && status !== "pending";
+    })
+  ).length;
   return { total, clear, pct: Math.round((clear / total) * 100) };
 }

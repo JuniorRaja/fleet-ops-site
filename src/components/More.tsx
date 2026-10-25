@@ -1,5 +1,5 @@
 import { more } from "@/lib/mergedContent";
-import { DOC_ORDER, VEHICLES, statusOf } from "@/lib/fleet";
+import { DOC_ORDER, VEHICLES, demoDate, fmtDate, statusOf } from "@/lib/fleet";
 import { Icon } from "@/components/ui/Icons";
 import { useReveals } from "@/hooks/useReveals";
 
@@ -18,7 +18,7 @@ function TileObject({ name }: { name: string }) {
           <span>FUEL LOG</span><Icon name="fuel" size={16} className="text-brand" />
         </div>
         <div className="mt-3 flex items-end justify-between">
-          <div><p className="font-mono text-xs font-semibold">42.8 L</p><p className="mt-1 text-[0.6rem] text-ink/55">Diesel · 14 Oct</p></div>
+          <div><p className="font-mono text-xs font-semibold">42.8 L</p><p className="mt-1 text-[0.6rem] text-ink/55">Diesel · {fmtDate(demoDate(1))}</p></div>
           <p className="display text-lg">₹4,108</p>
         </div>
         <div className="mt-2 h-1 rounded-full bg-brand/20"><div className="h-full w-2/3 rounded-full bg-brand" /></div>

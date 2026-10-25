@@ -1,6 +1,7 @@
 import { useRef, useState, type KeyboardEvent } from "react";
 import { DemoFrame, DemoHead } from "@/components/ui/DemoFrame";
 import { Icon } from "@/components/ui/Icons";
+import { demoDate, fmtDate, TODAY } from "@/lib/fleet";
 import { cn } from "@/utils/cn";
 
 type VStatus = "available" | "trip" | "workshop" | "hold";
@@ -28,7 +29,7 @@ const START: Veh[] = [
     plate: "TN 00 GH 7714",
     kind: "Lorry · BharatBenz 3523R",
     status: "hold",
-    note: "Put on hold by Ravi, 12 Oct: insurance expired, renewal pending",
+    note: `Put on hold by Ravi, ${fmtDate(demoDate(-1))}: insurance expired, renewal pending`,
   },
 ];
 
@@ -42,7 +43,7 @@ const UI: Record<VStatus, { label: string; dot: string; chip: string }> = {
 const DRIVERS = ["Selvam K", "Murugan R", "Ibrahim S", "Karthik V"];
 const ACTOR: Record<Role, string> = { incharge: "Ravi (Transport in-charge)", owner: "Owner" };
 
-const stamp = (n: number) => `13 Oct, 7:${String(Math.min(42 + n, 59)).padStart(2, "0")} AM`;
+const stamp = (n: number) => `${fmtDate(TODAY)}, 7:${String(Math.min(42 + n, 59)).padStart(2, "0")} AM`;
 
 const inputCls =
   "w-full rounded-xl border border-ink/20 bg-white px-3.5 py-3 text-[15px] placeholder:text-ink/45 focus:border-ink disabled:bg-ink/5";

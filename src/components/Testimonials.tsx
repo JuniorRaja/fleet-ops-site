@@ -1,23 +1,23 @@
 import { Reveal } from "@/components/ui/Reveal";
 
-/* Sample operator quotes: swap in real customer quotes before launch. */
+/* Illustrative profiles using public company names and imaginary people. */
 const QUOTES = [
   {
     q: "We used to find out about a lapsed fitness certificate at the checkpost. Now Ravi gets a message three weeks before, and the renewal is already booked.",
-    n: "R. Senthil Kumar",
-    r: "Owner · 42 lorries · Hosur",
+    n: "Arun Mehta",
+    r: "Imaginary owner · Example: VRL Logistics",
     tone: "bg-ink text-paper",
   },
   {
     q: "Document hold changed our mornings. Nobody argues about whether a lorry can go. It either can, or someone writes down why.",
-    n: "Meena Ravichandran",
-    r: "Transport in-charge · Container fleet, Chennai",
+    n: "Meena Rao",
+    r: "Imaginary transport in-charge · Example: TCI Express",
     tone: "bg-white text-ink",
   },
   {
     q: "One save for the trip, the diesel and the driver advance. My accountant stopped calling me on Sundays.",
-    n: "Abdul Hakeem",
-    r: "Fleet manager · 28 buses · Tiruchirappalli",
+    n: "Ravi Menon",
+    r: "Imaginary fleet manager · Example: Mahindra Logistics",
     tone: "bg-brand text-white",
   },
 ];
@@ -27,11 +27,11 @@ export function Testimonials() {
     <section aria-labelledby="quotes-title" className="relative overflow-hidden bg-paper-deep/60 py-24 sm:py-32">
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
         <Reveal>
-          <p className="eyebrow text-brand">In their words</p>
+          <p className="eyebrow text-brand">Illustrative operator profiles</p>
         </Reveal>
         <Reveal delay={60}>
           <h2 id="quotes-title" className="display mt-4 max-w-[16ch] text-[clamp(2.5rem,6vw,5.6rem)]">
-            Quieter yards. Calmer owners.
+            The workflows operators care about.
           </h2>
         </Reveal>
 
