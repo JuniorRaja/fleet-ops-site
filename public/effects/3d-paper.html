@@ -67,6 +67,8 @@ body{
 (function(){
 "use strict";
 const T = THREE;
+let reported = false;
+const report = (ok)=>{ try{ parent.postMessage({type:'trip-sheet', ok:ok}, '*'); }catch(e){} };
 const TW = 1400, TH = 1932;               // 0.7246, same proportion as before
 const clamp = (v,a,b)=> v<a?a:(v>b?b:v);
 const rng = (s)=>()=>{ s=(s*1103515245+12345)&0x7fffffff; return (s>>>8)/8388608; };
@@ -205,8 +207,12 @@ function makeCertTexture(){
    3. SCENE
    ====================================================================== */
 const canvas = document.getElementById('gl');
-const renderer = new T.WebGLRenderer({canvas, antialias:true, alpha:true,
-                                      powerPreference:'high-performance'});
+let renderer;
+try{
+  renderer = new T.WebGLRenderer({canvas, antialias:true, alpha:true,
+                                  powerPreference:'high-performance'});
+}catch(err){ report(false); return; }
+canvas.addEventListener('webglcontextlost', ()=>report(false));
 renderer.outputEncoding = T.sRGBEncoding;
 renderer.toneMapping = T.NoToneMapping;
 
@@ -531,6 +537,7 @@ function frame(){
   if(wantCursor !== cursorNow){ cursorNow = wantCursor; document.body.style.cursor = wantCursor; }
 
   renderer.render(scene,camera);
+  if(!reported){ reported = true; report(true); }
 }
 
 function boot(){

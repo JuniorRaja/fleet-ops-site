@@ -382,6 +382,134 @@ html[data-motion="off"] .lit .draw-check path {
   stroke-dashoffset: 0;
 }
 
+/* ---------- Pricing card ---------- */
+.price-card {
+  background:
+    radial-gradient(100% 80% at 88% 115%, rgb(3 49 30 / 0.55), transparent 62%),
+    radial-gradient(85% 75% at -10% 108%, rgb(3 49 30 / 0.4), transparent 60%),
+    linear-gradient(155deg, #087a4d 0%, #077248 46%, #06603c 100%);
+  box-shadow: 0 50px 100px -45px rgb(5 70 44 / 0.7);
+  transition:
+    transform 420ms var(--ease-out-soft),
+    box-shadow 420ms var(--ease-out-soft);
+}
+.price-card:hover,
+.price-card:focus-within {
+  transform: translateY(-6px);
+  box-shadow:
+    0 70px 130px -45px rgb(8 122 77 / 0.7),
+    inset 0 0 0 1px rgb(255 255 255 / 0.14);
+}
+
+/* slow light turning behind the content */
+.price-card::before {
+  content: "";
+  position: absolute;
+  inset: -45%;
+  z-index: 0;
+  pointer-events: none;
+  background: conic-gradient(from 0deg, transparent 0 52%, rgb(3 42 26 / 0.3) 70%, transparent 86%);
+  animation: price-turn 16s linear infinite;
+}
+@keyframes price-turn {
+  to {
+    transform: rotate(1turn);
+  }
+}
+
+/* sheen that crosses the card when you reach for it */
+.price-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(105deg, transparent 38%, rgb(255 255 255 / 0.16) 50%, transparent 62%);
+  transform: translateX(-120%);
+  transition: transform 900ms var(--ease-out-soft);
+}
+.price-card:hover::after,
+.price-card:focus-within::after {
+  transform: translateX(120%);
+}
+
+/* the figure catches the same light */
+.price-figure {
+  background: linear-gradient(100deg, #ffffff 26%, #8fe0b8 44%, #ffffff 62%);
+  background-size: 240% 100%;
+  background-position: 120% 0;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: price-shine 6s var(--ease-out-soft) infinite;
+}
+@keyframes price-shine {
+  0% {
+    background-position: 120% 0;
+  }
+  55%,
+  100% {
+    background-position: -40% 0;
+  }
+}
+
+/* breathing halo under the call to action */
+.cta-halo {
+  position: relative;
+  isolation: isolate;
+  display: inline-flex;
+}
+.cta-halo::before {
+  content: "";
+  position: absolute;
+  inset: -10px;
+  z-index: -1;
+  border-radius: 999px;
+  background: rgb(243 241 234 / 0.55);
+  filter: blur(14px);
+  animation: cta-breathe 2.9s ease-in-out infinite;
+}
+@keyframes cta-breathe {
+  0%,
+  100% {
+    opacity: 0.3;
+    transform: scale(0.96);
+  }
+  50% {
+    opacity: 0.78;
+    transform: scale(1.06);
+  }
+}
+.cta-halo:hover::before {
+  animation-play-state: paused;
+  opacity: 0.9;
+}
+
+html[data-motion="off"] .price-card,
+html[data-motion="off"] .price-card::after {
+  transition: none;
+}
+html[data-motion="off"] .price-card::before,
+html[data-motion="off"] .price-figure,
+html[data-motion="off"] .cta-halo::before {
+  animation: none;
+}
+html[data-motion="off"] .price-figure {
+  background: none;
+  color: var(--color-paper);
+}
+@media (prefers-reduced-motion: reduce) {
+  .price-card::before,
+  .price-figure,
+  .cta-halo::before {
+    animation: none;
+  }
+  .price-card,
+  .price-card::after {
+    transition: none;
+  }
+}
+
 /* Hide scrollbars on snap rails */
 .rail {
   scrollbar-width: none;

@@ -91,12 +91,12 @@ export function Footer() {
             <h2 className="eyebrow text-paper/60">Talk to us</h2>
             <ul className="mt-5 grid gap-3 text-[15px]">
               <li>
-                <a href={WHATSAPP_HREF} target="_blank" rel="noopener noreferrer" data-umami-event="demo_whatsapp" data-uisfx="send" data-uisfx-hover="notification" className={cn(link, "inline-flex items-center gap-2")}>
+                <a href={WHATSAPP_HREF} target="_blank" rel="noopener noreferrer" data-umami-event="demo_whatsapp" data-umami-event-source="footer" data-uisfx="send" data-uisfx-hover="notification" className={cn(link, "inline-flex items-center gap-2")}>
                   <Icon name="chat" size={17} /> WhatsApp a demo request
                 </a>
               </li>
               <li>
-                <a href={EMAIL_HREF} data-umami-event="contact_email" data-uisfx="forward" data-uisfx-hover="info" className={cn(link, "inline-flex items-center gap-2")}>
+                <a href={EMAIL_HREF} data-umami-event="contact_email" data-umami-event-source="footer" data-uisfx="forward" data-uisfx-hover="info" className={cn(link, "inline-flex items-center gap-2")}>
                   <Icon name="mail" size={17} /> {PH.email}
                 </a>
               </li>

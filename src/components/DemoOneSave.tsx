@@ -1,4 +1,5 @@
 import { useState, type KeyboardEvent } from "react";
+import { track } from "@/lib/analytics";
 import { DemoFrame, DemoHead } from "@/components/ui/DemoFrame";
 import { Icon, type IconName } from "@/components/ui/Icons";
 import { cn } from "@/utils/cn";
@@ -106,6 +107,7 @@ export function DemoOneSave() {
   const save = () => {
     if (!canSave) return;
     setSaved(true);
+    track("demo_trip_saved", { kind });
     setMsg("Saved together. Trip closed, fuel log updated and driver account posted.");
   };
 

@@ -87,7 +87,7 @@ export function Navbar() {
           </ul>
           <div className="flex items-center gap-2">
             <Magnetic className="hidden sm:inline-block">
-              <Button href={WHATSAPP_HREF} variant="primary" icon="chat" className="px-5 py-3 text-[14px]" cursor="Say hi" sound="open" hoverSound="mention">
+              <Button href={WHATSAPP_HREF} variant="primary" icon="chat" className="px-5 py-3 text-[14px]" cursor="Say hi" sound="open" hoverSound="mention" data-umami-event-source="navbar">
                 Book a demo
               </Button>
             </Magnetic>
@@ -122,7 +122,7 @@ export function Navbar() {
                 </li>
               ))}
             </ul>
-            <Button href={WHATSAPP_HREF} variant="brand" icon="chat" className="mt-2 w-full" sound="open">
+            <Button href={WHATSAPP_HREF} variant="brand" icon="chat" className="mt-2 w-full" sound="open" data-umami-event-source="navbar_mobile">
               Book a demo on WhatsApp
             </Button>
           </div>

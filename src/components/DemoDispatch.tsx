@@ -1,4 +1,5 @@
 import { useRef, useState, type KeyboardEvent } from "react";
+import { track } from "@/lib/analytics";
 import { DemoFrame, DemoHead } from "@/components/ui/DemoFrame";
 import { Icon } from "@/components/ui/Icons";
 import { demoDate, fmtDate, TODAY } from "@/lib/fleet";
@@ -109,6 +110,7 @@ export function DemoDispatch() {
       ]);
       setMsg(`${plate} dispatched with a written reason. A record row was added.`);
     }
+    track("demo_dispatch_save", { guarded, role });
     setStatus(plate, "trip", `Out now, saved ${stamp(records.length)}.`);
     setDriver("");
     setReason("");
@@ -121,6 +123,7 @@ export function DemoDispatch() {
       { id, plate, parts: ["Hold released by override", "Owner", stamp(records.length)], reason: releaseReason.trim() },
       ...r,
     ]);
+    track("demo_hold_release");
     setStatus(plate, "available");
     setReleaseReason("");
     setMsg(`${plate} released from hold by the owner. It is now available.`);

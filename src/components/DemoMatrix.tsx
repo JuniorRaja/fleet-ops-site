@@ -1,4 +1,5 @@
 import { useLayoutEffect, useMemo, useRef, useState } from "react";
+import { track } from "@/lib/analytics";
 import { DemoFrame, DemoHead } from "@/components/ui/DemoFrame";
 import { STATUS_META, StatusChip, StatusDot } from "@/components/ui/StatusDot";
 import { Flip } from "@/lib/gsap";
@@ -23,6 +24,7 @@ export function DemoMatrix() {
   const [filter, setFilter] = useState<Filter>("all");
   const [sel, setSel] = useState<{ plate: string; doc: DocId } | null>(null);
   const [msg, setMsg] = useState("");
+  const opened = useRef(false);
   const flip = useRef<ReturnType<typeof Flip.getState> | null>(null);
 
   const counts = useMemo(() => {
@@ -77,6 +79,10 @@ export function DemoMatrix() {
   }, [filter]);
 
   const select = (plate: string, doc: DocId) => {
+    if (!opened.current) {
+      opened.current = true;
+      track("demo_paper_open", { doc });
+    }
     if (sel?.plate === plate && sel.doc === doc) {
       setSel(null);
       setMsg("Selection cleared.");

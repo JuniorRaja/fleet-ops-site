@@ -34,26 +34,30 @@ export function Pricing() {
         </div>
 
         <Reveal className="mt-14 max-w-3xl">
-          <article className="relative rounded-[30px] border border-ink bg-ink p-7 text-paper shadow-[0_50px_100px_-40px_rgba(11,15,13,.7)] sm:p-10">
-            <p className="eyebrow text-lime">Simple fleet pricing</p>
-            <p className="mt-6 flex flex-wrap items-baseline gap-3">
-              <span className="display text-7xl">₹499</span>
-              <span className="text-base text-paper/70">per truck, per month</span>
-            </p>
-            <p className="mt-2 text-sm text-paper/65">Excluding GST. One-time vehicle onboarding applies.</p>
-            <ul className="mt-9 grid gap-3.5 sm:grid-cols-2">
-              {FEATURES.map((feature) => (
-                <li key={feature} className="flex items-start gap-3 text-[15px]">
-                  <span className="mt-0.5 grid size-5 shrink-0 place-items-center rounded-full bg-paper text-brand">
-                    <Icon name="check" size={12} stroke={2.8} />
-                  </span>
-                  {feature}
-                </li>
-              ))}
-            </ul>
-            <Button href={WHATSAPP_HREF} variant="light" icon="chat" className="mt-9" cursor="Book" sound="checkout" hoverSound="checkpoint">
-              Start with a demo
-            </Button>
+          <article className="price-card group relative isolate overflow-hidden rounded-[30px] p-7 text-white sm:p-10">
+            <div className="relative z-10">
+              <p className="eyebrow text-white">Simple fleet pricing</p>
+              <p className="mt-6 flex flex-wrap items-baseline gap-3">
+                <span className="price-figure display text-7xl">₹499</span>
+                <span className="text-base font-medium text-white">per truck, per month</span>
+              </p>
+              <p className="mt-2 text-sm text-white">Excluding GST. One-time vehicle onboarding applies.</p>
+              <ul className="mt-9 grid gap-3.5 sm:grid-cols-2">
+                {FEATURES.map((feature, i) => (
+                  <Reveal as="li" key={feature} delay={120 + i * 70} className="flex items-start gap-3 text-[15px]">
+                    <span className="mt-0.5 grid size-5 shrink-0 place-items-center rounded-full bg-paper text-brand shadow-[0_0_0_0_rgb(243_241_234_/_0.5)] transition-shadow duration-500 group-hover:shadow-[0_0_0_4px_rgb(243_241_234_/_0.14)]">
+                      <Icon name="check" size={12} stroke={2.8} />
+                    </span>
+                    {feature}
+                  </Reveal>
+                ))}
+              </ul>
+              <span className="cta-halo mt-9">
+                <Button href={WHATSAPP_HREF} variant="light" icon="chat" cursor="Book" sound="checkout" hoverSound="checkpoint" data-umami-event-source="pricing">
+                  Start with a demo
+                </Button>
+              </span>
+            </div>
           </article>
         </Reveal>
       </div>

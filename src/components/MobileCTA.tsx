@@ -29,6 +29,7 @@ export function MobileCTA() {
           className="px-4 py-3 text-sm"
           tabIndex={show ? 0 : -1}
           sound="send"
+          data-umami-event-source="mobile_bar"
         >
           Book demo
         </Button>

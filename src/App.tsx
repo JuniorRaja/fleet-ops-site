@@ -17,7 +17,6 @@ import { Honest } from "@/components/Honest";
 import { FinalCTA } from "@/components/FinalCTA";
 import { Footer } from "@/components/Footer";
 import { MobileCTA } from "@/components/MobileCTA";
-import { createFleetSnapshot } from "@/lib/fleet";
 
 /** Lenis smooth scroll, only when pinned scenes are active (desktop + motion on). Native scroll everywhere else. */
 function useSmoothScroll(enabled: boolean) {
@@ -44,7 +43,6 @@ function useSmoothScroll(enabled: boolean) {
 
 function Page() {
   const { pin } = useMotion();
-  const { today } = createFleetSnapshot();
   useSmoothScroll(pin);
 
   // Re-measure pinned scenes once fonts and late layout settle.
@@ -67,7 +65,7 @@ function Page() {
       <Cursor />
       <Navbar />
       <main id="main" tabIndex={-1} className="outline-none">
-        <Hero today={today} />
+        <Hero />
         <SocialProof />
         <Manifesto />
         <PapersToMatrix />
