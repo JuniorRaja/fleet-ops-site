@@ -165,7 +165,7 @@ export function OneSaveScene() {
       // 3 · Save and close is pressed
       tl.to(btn, { scale: 0.95, duration: 0.15 }, 3.4).to(
         btn,
-        { scale: 1, backgroundColor: "#c9f26b", color: "#0b0f0d", duration: 0.25 },
+        { scale: 1, backgroundColor: "#b8c7b9", color: "#0b0f0d", duration: 0.25 },
         3.55
       );
       // 4 · three cards slide out, lines draw to them
@@ -199,7 +199,7 @@ export function OneSaveScene() {
     <>
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute -right-40 -top-40 size-[700px] rounded-full bg-[radial-gradient(circle,rgba(201,242,107,.2),transparent_65%)]"
+        className="pointer-events-none absolute -right-40 -top-40 size-[700px] rounded-full bg-[radial-gradient(circle,rgba(184,199,185,.14),transparent_65%)]"
       />
       <div
         aria-hidden="true"
@@ -241,8 +241,8 @@ export function OneSaveScene() {
               <svg className="pointer-events-none absolute inset-0 h-full w-full overflow-visible" aria-hidden="true">
                 {RESULTS.map((r) => (
                   <g key={r.title}>
-                    <path className="s5-line" pathLength={1} fill="none" stroke="#c9f26b" strokeWidth="2" strokeLinecap="round" />
-                    <circle className="s5-end" r="4.5" fill="#c9f26b" />
+                    <path className="s5-line" pathLength={1} fill="none" stroke="#b8c7b9" strokeWidth="2" strokeLinecap="round" />
+                    <circle className="s5-end" r="4.5" fill="#b8c7b9" />
                   </g>
                 ))}
               </svg>

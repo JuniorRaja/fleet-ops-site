@@ -1,14 +1,14 @@
 import { Reveal } from "@/components/ui/Reveal";
 
-const OPERATORS = [
-  { name: "VRL Logistics", style: "font-display font-extrabold tracking-tight" },
-  { name: "TCI Express", style: "font-sans font-semibold tracking-[0.18em] uppercase text-[0.78em]" },
-  { name: "GATI", style: "font-display font-semibold italic-none" },
-  { name: "Safexpress", style: "font-mono font-bold tracking-tight" },
-  { name: "Mahindra Logistics", style: "font-sans font-black tracking-tighter" },
-  { name: "Blue Dart", style: "font-display font-bold tracking-wide uppercase text-[0.82em]" },
-  { name: "Delhivery", style: "font-sans font-semibold" },
-  { name: "Ashok Leyland", style: "font-display font-extrabold tracking-tight" },
+const MANUFACTURERS = [
+  { name: "Tata Motors", style: "font-display font-extrabold tracking-tight" },
+  { name: "Ashok Leyland", style: "font-sans font-semibold tracking-wide" },
+  { name: "BharatBenz", style: "font-display font-semibold" },
+  { name: "Eicher", style: "font-mono font-bold tracking-tight" },
+  { name: "Mahindra", style: "font-sans font-black tracking-tighter" },
+  { name: "Volvo Trucks", style: "font-display font-bold tracking-wide uppercase text-[0.82em]" },
+  { name: "Scania", style: "font-sans font-semibold" },
+  { name: "MAN", style: "font-display font-extrabold tracking-[0.12em]" },
 ];
 
 const STATS = [
@@ -24,17 +24,17 @@ export function SocialProof() {
       <div className="mx-auto max-w-7xl px-5 py-14 sm:px-8 lg:py-20">
         <Reveal>
           <h2 id="proof-title" className="eyebrow text-center text-ink/70">
-            Public operator examples. People and stories below are illustrative.
+            Built for the working machines already in your fleet.
           </h2>
         </Reveal>
       </div>
 
-      <div className="marquee-pause relative overflow-hidden pb-14" aria-label="Public operator examples">
+      <div className="marquee-pause relative overflow-hidden pb-14" aria-label="Truck manufacturers">
         <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-24 bg-linear-to-r from-paper to-transparent sm:w-40" />
         <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-24 bg-linear-to-l from-paper to-transparent sm:w-40" />
         <ul className="marquee-track flex items-center gap-14 pr-14 text-[26px] text-ink/60 sm:gap-20 sm:pr-20 sm:text-3xl">
-          {[...OPERATORS, ...OPERATORS].map((o, i) => (
-            <li key={i} aria-hidden={i >= OPERATORS.length} className={`whitespace-nowrap ${o.style}`}>
+          {[...MANUFACTURERS, ...MANUFACTURERS].map((o, i) => (
+            <li key={i} aria-hidden={i >= MANUFACTURERS.length} className={`whitespace-nowrap ${o.style}`}>
               {o.name}
             </li>
           ))}

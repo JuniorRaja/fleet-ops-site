@@ -1,42 +1,29 @@
 import { Reveal } from "@/components/ui/Reveal";
 
-/* Illustrative profiles using public company names and imaginary people. */
 const QUOTES = [
   {
-    q: "We used to find out about a lapsed fitness certificate at the checkpost. Now Ravi gets a message three weeks before, and the renewal is already booked.",
-    n: "Arun Mehta",
-    r: "Imaginary owner · Example: VRL Logistics",
+    q: "A solution that is built around our daily workflow. Easy to adapt and great insights. The onboarding was smooth and my team loves this new software.",
+    n: "KV Prijesh",
+    r: "PAS Transports",
     tone: "bg-ink text-paper",
-  },
-  {
-    q: "Document hold changed our mornings. Nobody argues about whether a lorry can go. It either can, or someone writes down why.",
-    n: "Meena Rao",
-    r: "Imaginary transport in-charge · Example: TCI Express",
-    tone: "bg-white text-ink",
-  },
-  {
-    q: "One save for the trip, the diesel and the driver advance. My accountant stopped calling me on Sundays.",
-    n: "Ravi Menon",
-    r: "Imaginary fleet manager · Example: Mahindra Logistics",
-    tone: "bg-brand text-white",
   },
 ];
 
 export function Testimonials() {
   return (
-    <section aria-labelledby="quotes-title" className="relative overflow-hidden bg-paper-deep/60 py-24 sm:py-32">
+    <section id="testimonials" aria-labelledby="quotes-title" className="relative overflow-hidden bg-paper-deep/60 py-24 sm:py-32">
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
         <Reveal>
-          <p className="eyebrow text-brand">Illustrative operator profiles</p>
+          <p className="eyebrow text-brand">From the yard</p>
         </Reveal>
         <Reveal delay={60}>
           <h2 id="quotes-title" className="display mt-4 max-w-[16ch] text-[clamp(2.5rem,6vw,5.6rem)]">
-            The workflows operators care about.
+            Built around the work operators already do.
           </h2>
         </Reveal>
 
         <ul
-          className="rail -mx-5 mt-14 flex snap-x snap-mandatory gap-4 overflow-x-auto px-5 pb-4 sm:-mx-8 sm:px-8 lg:mx-0 lg:grid lg:grid-cols-3 lg:overflow-visible lg:px-0"
+          className="mt-14 max-w-3xl"
           aria-label="Operator testimonials"
           tabIndex={0}
         >
@@ -45,7 +32,7 @@ export function Testimonials() {
               as="li"
               key={t.n}
               delay={i * 70}
-              className="w-[84%] shrink-0 snap-center sm:w-[60%] lg:w-auto"
+              className="w-full"
             >
               <figure
                 className={`flex h-full flex-col justify-between rounded-[28px] border border-ink/10 p-7 transition-transform duration-200 ease-out hover:-translate-y-1 sm:p-9 ${t.tone}`}

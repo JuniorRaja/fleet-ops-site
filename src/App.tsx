@@ -7,8 +7,8 @@ import { Navbar } from "@/components/Navbar";
 import { Hero } from "@/components/Hero";
 import { SocialProof } from "@/components/SocialProof";
 import { Manifesto } from "@/components/Manifesto";
-import { Features } from "@/components/Features";
 import { PapersToMatrix } from "@/components/PapersToMatrix";
+import { TripSheetPaper } from "@/components/TripSheetPaper";
 import { Roles } from "@/components/Roles";
 import { More } from "@/components/More";
 import { Testimonials } from "@/components/Testimonials";
@@ -70,8 +70,8 @@ function Page() {
         <Hero today={today} />
         <SocialProof />
         <Manifesto />
-        <Features />
         <PapersToMatrix />
+        <TripSheetPaper />
         <Roles />
         <More />
         <Testimonials />

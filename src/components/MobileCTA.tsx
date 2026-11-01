@@ -28,6 +28,7 @@ export function MobileCTA() {
           icon="chat"
           className="px-4 py-3 text-sm"
           tabIndex={show ? 0 : -1}
+          sound="send"
         >
           Book demo
         </Button>

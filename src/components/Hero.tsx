@@ -157,11 +157,11 @@ export function Hero({ today = TODAY }: { today?: string }) {
           </p>
           <div className="hero-fade mt-8 flex flex-wrap items-center gap-3">
             <Magnetic>
-              <Button href={WHATSAPP_HREF} variant="brand" icon="chat" cursor="Book">
+              <Button href={WHATSAPP_HREF} variant="brand" icon="chat" cursor="Book" sound="send" hoverSound="focus">
                 Book a demo on WhatsApp
               </Button>
             </Magnetic>
-            <Button href="/demo.html" variant="ghost" icon="arrow-up-right" cursor="Try demo">
+            <Button href="/demo.html" variant="ghost" icon="arrow-up-right" cursor="Try demo" sound="play" hoverSound="select">
               Try the interactive demo
             </Button>
           </div>

@@ -44,8 +44,7 @@
   --color-paper: #f3f1ea;
   --color-paper-deep: #e8e5db;
   --color-brand: #087a4d;
-  --color-brand-bright: #0fa468;
-  --color-lime: #c9f26b;
+  --color-lime: #b8c7b9;
   --color-valid: #0f9d6a;
   --color-warn: #f0a020;
   --color-danger: #d92d2d;
@@ -141,7 +140,7 @@ html.lenis body {
 .desk-surface {
   background:
     radial-gradient(1200px 700px at 10% -10%, rgba(255, 255, 255, 0.95), transparent 60%),
-    radial-gradient(900px 600px at 96% 30%, rgba(201, 242, 107, 0.22), transparent 60%),
+    radial-gradient(900px 600px at 96% 30%, rgba(184, 199, 185, 0.18), transparent 60%),
     linear-gradient(rgba(11, 15, 13, 0.045) 1px, transparent 1px) 0 0 / 64px 64px,
     linear-gradient(90deg, rgba(11, 15, 13, 0.045) 1px, transparent 1px) 0 0 / 64px 64px,
     linear-gradient(180deg, #f6f4ee, #ebe8de);

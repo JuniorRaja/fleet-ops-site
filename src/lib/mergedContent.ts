@@ -36,7 +36,7 @@ export const honest = {
     { q: "Does it remind me before papers expire?", a: "Yes. It shows every vehicle’s six papers in one place, marks what is due or expired, and sends email reminders before a paper is due." },
     { q: "Does it work for buses?", a: "Yes, for papers, trips, fuel, maintenance and tyres. It does not do tickets, bookings, fares or timetables." },
     { q: "Does it work on my phone?", a: "Yes, in your phone’s web browser. There is no separate app to install." },
-    { q: "What does it cost?", a: "We share the price in your demo. It depends on the size of your fleet." },
+    { q: "What does it cost?", a: "Fleet OPS costs ₹499 per truck each month. A one-time vehicle onboarding charge also applies." },
   ],
 };
 

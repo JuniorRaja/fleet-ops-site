@@ -4,11 +4,11 @@ export function Logo({ className, dark = false }: { className?: string; dark?: b
   return (
     <span className={cn("inline-flex items-center gap-2", className)}>
       <svg width="28" height="28" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
-        <rect width="32" height="32" rx="9" fill={dark ? "#c9f26b" : "#0b0f0d"} />
+        <rect width="32" height="32" rx="9" fill={dark ? "#b8c7b9" : "#0b0f0d"} />
         <path
           d="M9 16.5l4.5 4.5L23 11"
           fill="none"
-          stroke={dark ? "#0b0f0d" : "#c9f26b"}
+          stroke={dark ? "#0b0f0d" : "#b8c7b9"}
           strokeWidth="3"
           strokeLinecap="round"
           strokeLinejoin="round"

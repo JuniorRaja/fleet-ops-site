@@ -2,6 +2,7 @@ import type { SVGProps } from "react";
 
 const PATHS = {
   "arrow-right": "M5 12h14M13 6l6 6-6 6",
+  "arrow-left": "M19 12H5m6-6-6 6 6 6",
   "arrow-up-right": "M7 17 17 7M8 7h9v9",
   "arrow-down": "M12 5v14M6 13l6 6 6-6",
   check: "M5 12.5l4.5 4.5L19 7.5",

@@ -5,6 +5,7 @@ import { PAPER_DOCS, PaperCard } from "@/components/ui/PaperCard";
 import { STATUS_META, StatusDot } from "@/components/ui/StatusDot";
 import { gsap } from "@/lib/gsap";
 import { useMotion } from "@/lib/motion";
+import { useSound } from "@/lib/sound";
 import { DOC_META, DOC_ORDER, VEHICLES, fmtDate, fmtShort, statusOf } from "@/lib/fleet";
 
 const ROWS = VEHICLES.slice(0, 5);
@@ -112,6 +113,7 @@ const CAPTION = "On hold for papers. It goes out only with a written reason.";
 
 export function PapersToMatrix() {
   const { pin } = useMotion();
+  const { play } = useSound();
   const root = useRef<HTMLElement>(null);
 
   useLayoutEffect(() => {
@@ -129,6 +131,8 @@ export function PapersToMatrix() {
       const panel = el.querySelector(".s4-panel");
       const badge = el.querySelector(".s4-badge");
       const caption = el.querySelector(".s4-caption");
+      let soundStage = 0;
+      const stageCues = ["open", "drag-start", "snap", "complete"] as const;
 
       const geo = (i: number) => {
         const sr = stage.getBoundingClientRect();
@@ -161,6 +165,11 @@ export function PapersToMatrix() {
           scrub: 0.6,
           anticipatePin: 1,
           invalidateOnRefresh: true,
+          onUpdate: (self) => {
+            const nextStage = self.progress >= 0.9 ? 4 : self.progress >= 0.62 ? 3 : self.progress >= 0.26 ? 2 : self.progress >= 0.06 ? 1 : 0;
+            if (self.direction > 0 && nextStage > soundStage) play(stageCues[nextStage - 1]);
+            soundStage = nextStage;
+          },
         },
       });
 
@@ -212,7 +221,7 @@ export function PapersToMatrix() {
       tl.to({}, { duration: 0.5 });
     }, root);
     return () => ctx.revert();
-  }, [pin]);
+  }, [pin, play]);
 
   if (pin) {
     return (

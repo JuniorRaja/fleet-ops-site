@@ -8,9 +8,10 @@ import { WHATSAPP_HREF } from "@/lib/config";
 import { cn } from "@/utils/cn";
 
 const LINKS = [
-  { id: "features", label: "Features" },
+  { id: "trip-sheet", label: "Trip sheet" },
   { id: "matrix-scene", label: "Matrix" },
   { id: "roles", label: "Roles" },
+  { id: "testimonials", label: "Stories" },
   { id: "pricing", label: "Pricing" },
   { id: "faq", label: "FAQ" },
 ];
@@ -76,6 +77,7 @@ export function Navbar() {
                 <a
                   href={`#${l.id}`}
                   onClick={go(l.id)}
+                  data-uisfx-hover="hover"
                   className="rounded-full px-4 py-2 text-[14px] font-medium text-ink/75 transition-colors duration-200 hover:bg-ink/5 hover:text-ink"
                 >
                   {l.label}
@@ -85,7 +87,7 @@ export function Navbar() {
           </ul>
           <div className="flex items-center gap-2">
             <Magnetic className="hidden sm:inline-block">
-              <Button href={WHATSAPP_HREF} variant="primary" icon="chat" className="px-5 py-3 text-[14px]" cursor="Say hi">
+              <Button href={WHATSAPP_HREF} variant="primary" icon="chat" className="px-5 py-3 text-[14px]" cursor="Say hi" sound="open" hoverSound="mention">
                 Book a demo
               </Button>
             </Magnetic>
@@ -95,6 +97,8 @@ export function Navbar() {
               aria-expanded={open}
               aria-controls="mobile-menu"
               aria-label={open ? "Close menu" : "Open menu"}
+              data-uisfx={open ? "close" : "open"}
+              data-uisfx-hover="hover"
               onClick={() => setOpen((o) => !o)}
             >
               <Icon name={open ? "x" : "menu"} />
@@ -109,6 +113,7 @@ export function Navbar() {
                   <a
                     href={`#${l.id}`}
                     onClick={go(l.id)}
+                    data-uisfx-hover="hover"
                     className="flex items-center justify-between rounded-2xl px-4 py-3.5 text-[17px] font-semibold hover:bg-ink/5"
                   >
                     {l.label}
@@ -117,7 +122,7 @@ export function Navbar() {
                 </li>
               ))}
             </ul>
-            <Button href={WHATSAPP_HREF} variant="brand" icon="chat" className="mt-2 w-full">
+            <Button href={WHATSAPP_HREF} variant="brand" icon="chat" className="mt-2 w-full" sound="open">
               Book a demo on WhatsApp
             </Button>
           </div>

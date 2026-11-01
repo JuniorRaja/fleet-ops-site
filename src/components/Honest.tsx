@@ -33,7 +33,7 @@ export function Honest() {
       <div data-reveal className="mt-14 md:mt-0">
         {honest.faq.map((f) => (
           <details key={f.q} className="group border-b border-ink/12 py-5 first:border-t">
-            <summary className="flex cursor-pointer list-none items-center justify-between gap-6 text-[clamp(1.0625rem,1.45vw,1.375rem)] font-semibold [&::-webkit-details-marker]:hidden">
+            <summary data-umami-event="faq_open" data-umami-event-question={f.q} data-uisfx="select" className="flex cursor-pointer list-none items-center justify-between gap-6 text-[clamp(1.0625rem,1.45vw,1.375rem)] font-semibold [&::-webkit-details-marker]:hidden">
               {f.q}
               <span aria-hidden="true" className="grid size-8 shrink-0 place-items-center rounded-full ring-1 ring-ink/20 transition-transform duration-300 group-open:rotate-45">
                 +

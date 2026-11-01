@@ -31,12 +31,12 @@ export function FinalCTA() {
 
           <div className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
             <Magnetic>
-              <Button href={WHATSAPP_HREF} variant="light" icon="chat" className="px-7 py-4 text-base" cursor="Chat">
+              <Button href={WHATSAPP_HREF} variant="light" icon="chat" className="px-7 py-4 text-base" cursor="Chat" sound="send" hoverSound="notification">
                 Book a demo on WhatsApp
               </Button>
             </Magnetic>
             <Magnetic>
-              <Button href={EMAIL_HREF} variant="ghostDark" icon="mail" className="px-7 py-4 text-base" cursor="Email">
+              <Button href={EMAIL_HREF} variant="ghostDark" icon="mail" className="px-7 py-4 text-base" cursor="Email" sound="forward" hoverSound="info">
                 Email us instead
               </Button>
             </Magnetic>

@@ -14,7 +14,8 @@
 ## Limits
 
 - Fleet OPS does not provide GPS or live vehicle tracking, driver monitoring, a driver app, bus ticketing, government filing, or a full accounting package.
-- Pricing is shared during a product demo; no public price is stated on the website.
+- Fleet OPS costs ₹499 per truck each month, excluding GST.
+- A one-time vehicle onboarding charge also applies.
 
 ## Contact
 
