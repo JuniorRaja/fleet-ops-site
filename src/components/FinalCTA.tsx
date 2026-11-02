@@ -23,10 +23,10 @@ export function FinalCTA() {
 
           <p className="eyebrow text-white/75">Fleet Ops · 20-minute demo</p>
           <h2 id="cta-title" className="display mx-auto mt-5 max-w-3xl text-[clamp(2.8rem,7vw,5.5rem)] text-white">
-            Keep every vehicle road-legal.
+            Move your fleet business forward.
           </h2>
           <p className="mx-auto mt-5 max-w-xl text-lg leading-relaxed text-white/80">
-            Book a demo on your own fleet. We'll typically reply within {PH.reply}.
+            See how Fleet OPS fits your daily workflow. We reply within {PH.reply}.
           </p>
 
           <div className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">

@@ -5,13 +5,13 @@ import { gsap } from "@/lib/gsap";
 import { useMotion } from "@/lib/motion";
 
 const TEXT =
-  "A lapsed fitness certificate doesn't cost you a reminder. It costs you a day's trip, a fine at the checkpost, and a customer who stops calling.";
-const HL = new Set(["lapsed", "fine", "trip,"]);
+  "Without clear information, your team checks vehicle availability, documents and driver payments across spreadsheets, calls and paper files.";
+const HL = new Set(["spreadsheets,", "calls", "files."]);
 
 const PAINS: { icon: IconName; title: string; body: string }[] = [
-  { icon: "file", title: "Papers in drawers", body: "Six documents a vehicle, spread across files, phones and one very tired clerk." },
-  { icon: "calendar", title: "Dates in diaries", body: "Renewals tracked on a calendar nobody opens until the checkpost does." },
-  { icon: "key", title: "Trips on trust", body: "A vehicle is sent out because it was needed. Nobody wrote down why." },
+  { icon: "file", title: "Documents are scattered", body: "Vehicle papers sit across files, phones and spreadsheets." },
+  { icon: "calendar", title: "Renewals get missed", body: "Manual reminders make important expiry dates easy to miss." },
+  { icon: "key", title: "Decisions lack records", body: "Vehicles get dispatched without a clear approval or written reason." },
 ];
 
 export function Manifesto() {
@@ -65,10 +65,10 @@ export function Manifesto() {
 
       <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
         <Reveal>
-          <p className="eyebrow text-brand">The problem, plainly</p>
+          <p className="eyebrow text-brand">Why fleet operations need better information</p>
         </Reveal>
         <h2 id="manifesto-title" className="sr-only">
-          What a lapsed paper really costs
+          The cost of manual fleet operations
         </h2>
         <p className="mtext display mt-8 max-w-[26ch] text-[clamp(2.2rem,6vw,5.8rem)] !leading-[1.02]">
           {words.map((w, i) => (

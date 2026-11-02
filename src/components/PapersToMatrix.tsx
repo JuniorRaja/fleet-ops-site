@@ -234,11 +234,11 @@ export function PapersToMatrix() {
               <div>
                 <p className="eyebrow text-brand">The matrix</p>
                 <h2 id="s4-title" className="display mt-3 text-[clamp(2.4rem,4.6vw,4.4rem)]">
-                  Six papers. One matrix.
+                  Every document. One clear view.
                 </h2>
               </div>
               <p className="max-w-[300px] pb-1 text-[15px] leading-relaxed text-ink/70">
-                Every certificate on the desk becomes a column. Every vehicle becomes a row you can read in a second.
+                See every vehicle and document status in one clear, real-time view.
               </p>
             </div>
             <MatrixPanel />
@@ -290,12 +290,12 @@ export function PapersToMatrix() {
         </Reveal>
         <Reveal delay={60}>
           <h2 id="s4-title" className="display mt-3 text-[clamp(2.4rem,9vw,4.4rem)]">
-            Six papers. One matrix.
+            Every document. One clear view.
           </h2>
         </Reveal>
         <Reveal delay={120}>
           <p className="mt-4 max-w-md text-[17px] leading-relaxed text-ink/70">
-            Every certificate on the desk becomes a column. Every vehicle becomes a row you can read in a second.
+            See every vehicle and document status in one clear, real-time view.
           </p>
         </Reveal>
 

@@ -131,24 +131,24 @@ const STEPS: { n: string; kicker: string; title: string; body: string; points: s
   {
     n: "01",
     kicker: "Capture",
-    title: "Log each paper once.",
-    body: "Add the six papers behind every vehicle with their expiry dates and a photo of the proof. Fleet OPS already knows each paper's lead time.",
+    title: "Add each document once.",
+    body: "Add every vehicle document, its expiry date and supporting proof. Fleet OPS then tracks the correct renewal timeline.",
     points: ["Fitness, insurance, PUC, permit, RC, road tax", "Driver licences flagged 30 days ahead", "Proof attached to the date it supports"],
     Panel: PanelCapture,
   },
   {
     n: "02",
     kicker: "Warn",
-    title: "Hear about it before the officer does.",
-    body: "Reminders start at each paper's own lead time: 7 days for PUC, 45 for the permit. Renewed but no proof yet? It stays flagged as pending proof.",
+    title: "Get reminders before documents expire.",
+    body: "Fleet OPS sends WhatsApp and email reminders at the right time. Renewed documents remain pending until proof is added.",
     points: ["Valid, expiring soon, pending proof, expired", "Reminders to the in-charge on WhatsApp or email", "One matrix to see the whole fleet at once"],
     Panel: PanelWarn,
   },
   {
     n: "03",
     kicker: "Gate",
-    title: "Hold what is not fit to roll.",
-    body: "A vehicle on document hold, or in the workshop, can still go out, but only with a written reason. The name, role, time and reason are saved with the trip.",
+    title: "Control which vehicles can leave.",
+    body: "Vehicles on document hold or in the workshop need written approval. Fleet OPS records the person, time and reason.",
     points: ["Document hold and workshop status guard dispatch", "No second trip for a vehicle already out", "In-charge renews; only the owner can override a hold"],
     Panel: PanelGate,
   },
@@ -222,7 +222,7 @@ export function HowItWorks() {
           <div className="relative mx-auto grid w-full max-w-7xl grid-cols-12 items-center gap-10 px-8 pt-16">
             <div className="col-span-5">
               <h2 id="how-title" className="eyebrow mb-8 text-ink/70">
-                How it works · three steps from drawer to dispatch
+                How Fleet OPS works in three clear steps
               </h2>
               <div className="grid">
                 {STEPS.map((s) => (
@@ -264,7 +264,7 @@ export function HowItWorks() {
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
         <Reveal>
           <h2 id="how-title" className="eyebrow text-ink/70">
-            How it works · three steps from drawer to dispatch
+            How Fleet OPS works in three clear steps
           </h2>
         </Reveal>
         <ol className="mt-12 grid gap-20 sm:gap-28">

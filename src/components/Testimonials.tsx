@@ -14,11 +14,11 @@ export function Testimonials() {
     <section id="testimonials" aria-labelledby="quotes-title" className="relative overflow-hidden bg-paper-deep/60 py-24 sm:py-32">
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
         <Reveal>
-          <p className="eyebrow text-brand">From the yard</p>
+          <p className="eyebrow text-brand">Proven outcomes</p>
         </Reveal>
         <Reveal delay={60}>
           <h2 id="quotes-title" className="display mt-4 max-w-[16ch] text-[clamp(2.5rem,6vw,5.6rem)]">
-            Built around the work operators already do.
+            Built around real fleet workflows.
           </h2>
         </Reveal>
 

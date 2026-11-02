@@ -9,6 +9,7 @@ const FEATURES = [
   "Trips, fuel, maintenance and driver accounts",
   "Owner, in-charge and accountant roles",
   "Reports and accountable override history",
+  "Guided onboarding and Excel import",
 ];
 
 export function Pricing() {
@@ -22,13 +23,13 @@ export function Pricing() {
             </Reveal>
             <Reveal delay={60}>
               <h2 id="pricing-title" className="display mt-4 text-[clamp(2.5rem,6.2vw,5.8rem)]">
-                Priced by vehicle. Never by surprise.
+                Simple, transparent pricing.
               </h2>
             </Reveal>
           </div>
           <Reveal delay={120} className="lg:col-span-4 lg:justify-self-end">
             <p className="max-w-sm text-lg leading-relaxed text-ink/65">
-              One clear monthly price. A one-time vehicle onboarding charge applies.
+              Pay one monthly price per truck. A one-time onboarding charge applies.
             </p>
           </Reveal>
         </div>

@@ -84,20 +84,19 @@ export function Hero() {
             <span className="relative grid size-2 place-items-center text-valid">
               <span className="pulse-dot relative size-2 rounded-full bg-valid" />
             </span>
-            Compliance &amp; maintenance. Not tracking.
+            A platform built for modern fleet operations
           </p>
           <h1
             id="hero-title"
             className="display mt-6 text-[clamp(3.2rem,14.5vw,5.6rem)] sm:text-[clamp(4.2rem,12vw,7.2rem)] lg:text-[clamp(4.2rem,6.4vw,7.3rem)]"
           >
-            <Words text="Papers in order." />
+            <Words text="Run your fleet." />
             <br />
-            <Words text="Wheels" className="text-brand" /> <Words text="on road." />
+            <Words text="Move your business" className="text-brand" /> <Words text="forward." />
           </h1>
           <p className="hero-fade mt-7 max-w-[560px] text-[17px] leading-relaxed text-ink/75 sm:text-lg">
-            Fleet OPS watches the six papers behind every lorry, trailer and bus: fitness, insurance, PUC, permit, RC
-            and road tax. It warns you before they lapse and stops an unfit vehicle leaving the yard without a written
-            reason.
+            Monitor documents, trips, fuel, maintenance and driver payments from one place. Get clear alerts, useful
+            reports and the information you need to make faster decisions.
           </p>
           <div className="hero-fade mt-8 flex flex-wrap items-center gap-3">
             <Magnetic>
@@ -110,7 +109,7 @@ export function Hero() {
             </Button>
           </div>
           <ul className="hero-fade mt-8 flex flex-wrap gap-x-6 gap-y-2.5 text-sm font-medium text-ink/75">
-            {["Six papers, every vehicle", "Lead-time warnings", "Every override has a name"].map((t) => (
+            {["Real-time fleet status", "WhatsApp and email alerts", "Reports that help cut costs"].map((t) => (
               <li key={t} className="flex items-center gap-2">
                 <span className="grid size-5 place-items-center rounded-full bg-brand text-white">
                   <Icon name="check" size={12} stroke={2.6} />

@@ -4,12 +4,11 @@ Updated: 2 November 2026
 
 ## Before launch
 
-1. Replace the hero papers with the approved interactive document carousel.
-2. Confirm claims about exports, reminders, response times, and compliance workflows.
+1. Confirm claims about exports, reminders, response times, and compliance workflows.
+2. Confirm the ten-year experience and data protection statements.
 3. Test touch, sound, keyboard use, and performance on physical mobile devices.
 4. Validate structured data after deployment using public search tools.
-5. Done: the trip-sheet panel falls back to a flat trip sheet when WebGL is missing, the scene fails, or it never reports in.
-6. Get professional review for the privacy policy and service terms.
+5. Get professional review for the privacy policy and service terms.
 
 ## Analytics after launch
 

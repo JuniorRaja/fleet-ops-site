@@ -3,7 +3,7 @@ import { fmtDate, TODAY } from "@/lib/fleet";
 
 export const roles = {
   eyebrow: "Roles",
-  heading: "Your in-charge runs the day. You keep control.",
+  heading: "Give every team member the right access.",
   items: [
     { name: "Owner", lines: ["Everything, including profit", "Cost per km and trip money", "Company settings and users"], featured: true },
     { name: "Transport in-charge", lines: ["Trips, papers, fuel and tyres", "Vehicles and drivers", "Profit stays hidden"] },
@@ -14,26 +14,28 @@ export const roles = {
 };
 
 export const more = {
-  eyebrow: "More in the office",
-  heading: "The rest of the office, in the same place.",
+  eyebrow: "Everything your fleet team needs",
+  heading: "Manage daily fleet work from one place.",
   tiles: [
-    { name: "Fuel log", body: "Every fill with litres and rate. Fills with an odd mileage or rate are flagged.", size: "wide" },
-    { name: "Maintenance", body: "Workshop jobs, and service due by km or by date.", size: "tall" },
-    { name: "Tyres", body: "Fit, rotate, retread, scrap. Know how far each tyre ran.", size: "base" },
-    { name: "Works on your phone", body: "Open it in your phone’s browser. Nothing to install.", size: "phone" },
-    { name: "Reports", body: "Cost per km and revenue against cost, as CSV and PDF.", size: "base" },
-    { name: "Excel import", body: "Load your vehicles from a spreadsheet. Mistakes show before anything saves.", size: "wide" },
+    { name: "Fuel and maintenance", body: "Track fuel, mileage, workshop jobs, service dates and tyre life.", size: "wide" },
+    { name: "Challan lookup", body: "Check vehicle challans without leaving your fleet workspace.", size: "tall" },
+    { name: "Driver licence checks", body: "Check licence details and get expiry reminders before they become a problem.", size: "base" },
+    { name: "Works on your phone", body: "Use Fleet OPS in your phone browser. Nothing needs installing.", size: "phone" },
+    { name: "Driver accounts and payments", body: "Track advances, batta, settlements and payment history for every driver.", size: "base" },
+    { name: "Reports and insights", body: "See costs, revenue and weekly business reports built for fleet owners.", size: "wide" },
+    { name: "WhatsApp and email alerts", body: "Send document and service reminders through channels your team already uses.", size: "base" },
+    { name: "Protected business data", body: "Our privacy policy and EULA explain how data is handled under applicable Indian and GDPR requirements.", size: "wide" },
   ],
 };
 
 export const honest = {
   eyebrow: "Straight answers",
-  heading: "What Fleet Ops does not do.",
+  heading: "Know exactly what Fleet OPS does.",
   nots: ["No GPS box", "No live tracking", "No driver app", "No bus tickets", "No government filing", "Not an accounting package"],
   notsNote: "Need something else? Message us.",
   faq: [
     { q: "Does it track my vehicles?", a: "No. Fleet Ops is office software. There is no GPS, no live map and nothing to fit in your vehicles." },
-    { q: "Does it remind me before papers expire?", a: "Yes. It shows every vehicle’s six papers in one place, marks what is due or expired, and sends email reminders before a paper is due." },
+    { q: "Does it remind me before papers expire?", a: "Yes. It shows every vehicle document in one place and sends WhatsApp or email reminders before expiry." },
     { q: "Does it work for buses?", a: "Yes, for papers, trips, fuel, maintenance and tyres. It does not do tickets, bookings, fares or timetables." },
     { q: "Does it work on my phone?", a: "Yes, in your phone’s web browser. There is no separate app to install." },
     { q: "What does it cost?", a: "Fleet OPS costs ₹499 per truck each month. A one-time vehicle onboarding charge also applies." },

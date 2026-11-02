@@ -24,8 +24,11 @@ export function SocialProof() {
       <div className="mx-auto max-w-7xl px-5 py-14 sm:px-8 lg:py-20">
         <Reveal>
           <h2 id="proof-title" className="eyebrow text-center text-ink/70">
-            Built for the working machines already in your fleet.
+            Built for trucks and buses from leading manufacturers.
           </h2>
+          <p className="mx-auto mt-4 max-w-2xl text-center text-[15px] leading-relaxed text-ink/65">
+            Built by people with over ten years of enterprise software experience.
+          </p>
         </Reveal>
       </div>
 
